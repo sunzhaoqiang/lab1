@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class First1Test {
-	public static First1 test = new First1();
+
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -17,39 +17,28 @@ public class First1Test {
 	}
 
 	@Test
-	public void testExpression() {
+	public void testSimplify() {
 		String str;
-		str=First1.expression("3+2");
-		assertEquals("3+2",str);
-	}
-	@Test
-	public void testExpression1() {
-		String str;
-		str=First1.expression("3*x");
-		assertEquals("3*x",str);
-	}
-	@Test
-	public void testExpression2() {
-		String str;
-		str=First1.expression("3*x+2*y");
-		assertEquals("3*x+2*y",str);
-	}
-	@Test
-	public void testExpression4() {
-		String str;
-		str=First1.expression("3+ 2");
+		str=First1.simplify("x*y*z","!simpllli x=2" );
 		assertEquals(null,str);
 	}
 	@Test
-	public void testExpression5() {
+	public void testSimplify1() {
 		String str;
-		str=First1.expression("-3*x");
-		assertEquals(null,str);
+		str=First1.simplify("x*y*z","!simplify" );
+		assertEquals("x*y*z",str);
 	}
 	@Test
-	public void testExpression6() {
+	public void testSimplify2() {
 		String str;
-		str=First1.expression("3x");
-		assertEquals(null,str);
+		str=First1.simplify("x*y*z","!simplify x=2" );
+		assertEquals("2*y*z",str);
 	}
+	@Test
+	public void testSimplify3() {
+		String str;
+		str=First1.simplify("x*y*z","!simplify x=1 y=2" );
+		assertEquals("1*2*z",str);
+	}
+
 }

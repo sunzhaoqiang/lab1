@@ -18,7 +18,12 @@ public class First1 {
        {
     	   System.out.println("输入错误");
        }
-       simplify(abs);
+	   System.out.println("请输入未知数的值：");
+       String zhi=in.nextLine();
+       if(simplify(abs,zhi)==null)
+       {
+    	   System.out.println("输入错误");
+       }
        derivate(abs); 
        in.close();
 	}
@@ -65,7 +70,7 @@ public class First1 {
 	       }
 		return null;
 	}
-	public static void simplify(String abs)
+	public static String simplify(String abs,String zhi)
 	{
 		   int b = abs.length();
 		   char[] A= new char[b];
@@ -73,9 +78,6 @@ public class First1 {
 	       {
 	    	   A[i] = abs.charAt(i);
 	       }
-     	   Scanner in = new Scanner(System.in);
-		   System.out.println("请输入未知数的值：");
-	       String zhi=in.nextLine();
 	       int f = zhi.length();
 	       char[] B= new char[f];
 	       for(int i=0;i<f;i++)
@@ -86,13 +88,13 @@ public class First1 {
 	       int u=0;
 	       if(sss[0].equals("!simplify")==false)
 	       {
-	    	   System.out.println("输入错误");
+	    	   return null;
 	       }
 	       else
 	       {
 	    	   if(f==9)
 	           {
-	        	   System.out.println(abs);
+	        	   return abs;
 	           }
 	           else
 	           {
@@ -102,7 +104,6 @@ public class First1 {
 	            	   {
 	            		   A[i]=B[12];
 	            	   }
-	            	   
 	               }
 	               while(f-12-u>1)
 	               {
@@ -115,9 +116,13 @@ public class First1 {
 	                	   }
 	                   }
 	               }
+	               zhi = "";
 	               for(int j=0;j<b;j++)
-	        		   System.out.print(A[j]);
-	               System.out.print("\n");
+	               {
+	        		   zhi = zhi + A[j];
+	               }
+	               System.out.println(zhi);
+                   return zhi;
 	           }
 	       } 
 	}
